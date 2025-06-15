@@ -1,0 +1,44 @@
+CEM-7: AI-Enhanced Extinction Model with Dynamic Feedback
+CEM-7 is an advanced population simulation model designed to explore humanity's long-term demographic trajectory under a hypothetical scenario: a rapid, global cultural shift towards exclusive homosexuality.
+This model moves beyond simple demographic projections by simulating a complex adaptive system. It integrates AI-driven forecasts for technological adoption with dynamic social and economic feedback loops to provide a more realistic and holistic view of systemic risk.
+What Does This Model Do?
+CEM-7 simulates the world population over a 200-year period, tracking the interplay between three primary forces:
+A Cultural Shift (H): The fraction of the population identifying as exclusively homosexual (H(t)) rises over time, reducing the base for natural reproduction.
+A Technological Solution (T): The efficacy of Assisted Reproductive Technologies (ART) like IVF and ectogenesis (T(t)) also rises, allowing non-heterosexual couples to have children. This is projected using a forecasting algorithm trained on historical data.
+Systemic Feedback: This is the core innovation of CEM-7. The model includes two critical feedback loops that cause the system to behave in complex, non-linear ways:
+Economic Health Cascade (Negative Feedback): Population decline damages the economy, which in turn hinders the deployment and scaling of expensive ART. This creates a potential "death spiral" where the solution is crippled by the problem it's trying to solve.
+Social Crisis Aversion (Positive Feedback): If the population decline becomes a visible crisis, society can react by slowing the cultural shift toward non-reproduction, creating a potential (though often weak) stabilizing effect.
+By running hundreds of Monte Carlo simulations with these dynamics, CEM-7 can estimate the probability of various outcomes, from population stability to catastrophic collapse.
+How to Operate the Model Efficiently
+The model is designed for ease of use and experimentation. All core logic is contained within the cem7.py script.
+1. Installation
+The model relies on standard scientific Python libraries. Install them via pip: pip install numpy pandas matplotlib statsmodels 2. Running a Standard Simulation
+To run the simulation with the default configuration, simply execute the Python script from your terminal:
+python cem7.py This will:
+Initialize the model with the default parameters defined in SimulationConfig.
+Run 500 Monte Carlo simulations.
+Generate and display a multi-panel plot showing the results, including the population trajectory, technology levels, and feedback loop dynamics.
+Print progress to the console.
+3. Customizing Scenarios (Key to Efficient Operation)
+The most powerful way to use this model is by modifying the SimulationConfig dataclass at the top of the cem7.py script. This allows you to explore different "what-if" scenarios without changing the core code.
+To operate the model efficiently, focus on tweaking these key parameters:
+Example: Test a "Techno-Optimist" Scenario
+What if compliance is higher and technology develops faster? Edit the SimulationConfig object:
+# --- Main Execution ---
+if __name__ == "__main__":
+    # Create a custom config for this run
+    techno_optimist_config = SimulationConfig(
+        base_compliance=0.95,  # 95% of couples attempt ART
+        h_midpoint_year=100      # Social shift is slower (midpoint at year 100)
+    )
+    
+    # Initialize components with the new config
+    ai_forecaster = AIForecaster() # Forecaster is independent of this config
+    model = DemographicModel(techno_optimist_config, ai_forecaster)
+    
+    print("Running Techno-Optimist scenario...")
+    results_df = model.run_simulation()
+    plot_results(results_df, techno_optimist_config) By changing these high-level parameters, you can rapidly test different hypotheses about the future and gain insight into which variables have the most impact on long-term survival.
+4. Interpreting the Output
+Population Trajectory Plot: The most important output. The median line shows the most likely outcome, while the shaded area shows the range of uncertainty (10th-90th percentile).
+Subplots: Use the other plots (H-Fraction, Effective Tech, Economic Health) to understand why the population behaved the way it did. For example, a steep drop in the "Effective Tech" plot reveals that an economic cascade was the primary driver of a population crash.
