@@ -4,9 +4,9 @@ CEM-7 simulates humanity's population over 200 years under a hypothetical stress
 
 The model's key feature is its dynamic feedback system:
 
-Economic Cascade:** Population decline weakens the economy, which in turn suppresses the rollout of expensive ART.
+Economic Cascade: Population decline weakens the economy, which in turn suppresses the rollout of expensive ART.
 
-Social Aversion:** A visible demographic crisis can slow the underlying cultural shift.
+Social Aversion: A visible demographic crisis can slow the underlying cultural shift.
 
 This allows the model to explore complex, non-linear "death spiral" or "stabilization" scenarios. ## Quickstart
 
